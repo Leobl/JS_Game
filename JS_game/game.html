@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <title>Fuckin' JS Game</title>
+
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      canvas {
+        background: #eee;
+        display: block;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <canvas id="myCanvas" width="480" height="320"></canvas>
+
+    <script>
+      var canvas = document.getElementById("myCanvas");
+      var d2stuff = canvas.getContext("2d"); // representing a two-dimensional rendering context... takes also values as "webgl", "webgl2" & "bitmaprenderer"
+
+      d2stuff.beginPath(); // xekinaei na zwgrafizei
+      d2stuff.rect(20, 40, 50, 50); // #1=x ,  #2=y , #3=width ,  #4= height
+      d2stuff.fillStyle = "#FF0000"; // color
+      d2stuff.fill(); // xrwmatizei to eswteriko analoga me to .fillStyle (=Fills the current drawing (path))
+      d2stuff.closePath(); // telos painting ....
+
+      d2stuff.beginPath();
+      d2stuff.arc(240, 160, 20, 0, Math.PI * 2, false); // #1=x,  #2=y, #3=r, #4=gwnia ekinhses, #5=gwnia telous
+      d2stuff.fillStyle = "green";
+      d2stuff.fill();
+      d2stuff.closePath();
+
+      d2stuff.beginPath();
+      d2stuff.rect(160, 10, 100, 40);
+      d2stuff.strokeStyle = "rgba(0, 0, 255, 0.5)"; //color perigrammatos
+      d2stuff.stroke(); //xrwmatizei to perigramma mono kai oxi to eswyetoko
+      d2stuff.closePath();
+    
+      d2stuff.beginPath();
+      d2stuff.rect(160, 10, 100, 40);
+      d2stuff.strokeStyle = "rgba(0, 0, 255, 0.5)"; //color perigrammatos
+      d2stuff.stroke(); //xrwmatizei to perigramma mono kai oxi to eswyetoko
+      d2stuff.closePath();
+    </script>
+
+  </body>
+
+</html>
