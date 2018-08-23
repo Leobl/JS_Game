@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <title>Fuckin' JS Game</title>
+
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      canvas {
+        background: #eee;
+        display: block;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <canvas id="myCanvas" width="480" height="320"></canvas>
+    <script>
+      var canvas = document.getElementById("myCanvas");
+      var d2stuff = canvas.getContext("2d");
+
+      /*Defining the variables so that there's no need to be done manually*/
+      var x = canvas.width/3;
+      var y = canvas.height-30;
+
+      /*This is how the ball seems to be moving,
+      by subtracting a small number from the initial
+      x and y*/
+      var dx = 2;
+      var dy = -2;
+
+      //Holds the radius of the drawn circle
+      var ballRadius = 10;
+
+      /*Both of those function are called forever, until we "tell" them to stop*/
+      //function that draws the ball
+      function drawBall() {
+          d2stuff.beginPath();
+          d2stuff.arc(x, y, ballRadius, 0, Math.PI*2);
+          d2stuff.fillStyle = "#0095DD";
+          d2stuff.fill();
+          d2stuff.closePath();
+      }
+
+      function draw() {
+        d2stuff.clearRect(0, 0, canvas.width, canvas.height);   //motion = not moving last rects or clear canvas: x,y of bottom right, x,y oftop left
+        drawBall();
+
+        /*Prevents the ball from hitting the TOP wall*/
+        if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
+              dx = -dx;
+          }
+        if(y + dy > canvas.height-ballRadius || y + dy < ballRadius) {
+            dy = -dy;
+        }
+
+        x+= dx; // adding each 10 milsesc  dx to x variable so that the ball changes posittion on X axis
+        y+= dy; // adding each 10 milsesc  dy to y variable so that the ball changes posittion on Y axis
+      }
+
+
+      setInterval(draw,10); // h setInterval dexetai san orismata mia methodo kai dipla ta milliseconds pou tha kaleitai
+    </script>
+
+  </body>
+</html>
